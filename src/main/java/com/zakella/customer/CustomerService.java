@@ -1,5 +1,6 @@
 package com.zakella.customer;
 
+import com.zakella.exception.RecourseNotFound;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -7,18 +8,15 @@ import java.util.List;
 @Service
 public class CustomerService {
 
-    CustomerDataAccessService customerDataAccessService;
+    private final CustomerDataAccessService customerDataAccessService;
 
     public CustomerService(CustomerDataAccessService customerDataAccessService) {
         this.customerDataAccessService = customerDataAccessService;
     }
 
     public Customer getCustomer (Integer id){
-        return customerDataAccessService.selectAllCustomers()
-                .stream()
-                .filter(customer -> customer.getId().equals(id))
-                .findFirst()
-                .orElseThrow(()-> new IllegalArgumentException(
+        return customerDataAccessService.selectCustomerById(id)
+                .orElseThrow(()-> new RecourseNotFound(
                         String.format("can find customer with id %s " , id)
                 ));
     }
