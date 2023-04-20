@@ -4,7 +4,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/fullstack
+    url: jdbc:postgresql://localhost:5432/customer
     username: postgres
     password: 123
   jpa:
