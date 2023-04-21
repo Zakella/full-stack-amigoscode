@@ -1,6 +1,6 @@
 server:
-  error:
-    include-message: always
+  port: 8080
+  include-message: always
 
 spring:
   datasource:
@@ -15,3 +15,5 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: false
+  main:
+    web-application-type: servlet

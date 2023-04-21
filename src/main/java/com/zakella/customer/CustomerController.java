@@ -1,14 +1,10 @@
 package com.zakella.customer;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController()
+@RestController
 @RequestMapping(path = "api/v1/customers")
 public class CustomerController {
 
@@ -26,5 +22,18 @@ public class CustomerController {
     @GetMapping("/{id}")
     public Customer getCustomerByI(@PathVariable(name = "id") Integer id){
         return customerService.getCustomer(id);
+    }
+
+    @PostMapping
+    public void registerCustomer(@RequestBody CustomerRegistrationRequest CustomerRegistrationRequest){
+        customerService.addCustomer(CustomerRegistrationRequest);
+
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCustomerByID(@PathVariable(name = "id") Integer id){
+        customerService.deleteCustomerById(id);
+
     }
 }
