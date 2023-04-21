@@ -23,11 +23,11 @@ public class Customer {
         this.age = age;
     }
     @Id
-    @SequenceGenerator(
-            name = "customer_id_sequence",
-            sequenceName = "customer_id_sequence"
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_id_sequence")
+//    @SequenceGenerator(
+//            name = "customer_id_sequence",
+//            sequenceName = "customer_id_sequence"
+//    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
     @Column(nullable = false)

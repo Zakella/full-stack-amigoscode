@@ -1,6 +1,6 @@
 server:
   port: 8080
-  include-message: always
+
 
 spring:
   datasource:

@@ -37,7 +37,7 @@ public class CustomerListDataAccessService implements CustomerDAO{
     }
 
     @Override
-    public boolean existsPersonWithEmail(String email) {
+    public boolean existsCustomerWithEmail(String email) {
         return customers.stream()
                 .anyMatch(customer -> customer.getEmail().equals(email));
     }
@@ -51,6 +51,11 @@ public class CustomerListDataAccessService implements CustomerDAO{
     public boolean existsCustomerWithID(Integer id) {
         return customers.stream().
                 anyMatch(customer -> customer.getId().equals(id));
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        customers.add(customer);
     }
 
 

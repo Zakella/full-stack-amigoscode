@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
   "name": "Joe",
-  "email": "joe1@gmail.com",
+  "email": "joe11@gmail.com",
   "age": 52
 }
 
@@ -21,3 +21,11 @@ DELETE http://localhost:8080/api/v1/customers/1
 
 ###
 GET localhost:8080/api/v1/customers
+
+###
+PUT localhost:8080/api/v1/customers/1
+Content-Type: application/json
+
+{
+  "age": 75
+}
