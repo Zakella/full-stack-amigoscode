@@ -9,6 +9,12 @@ import lombok.RequiredArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
+@Table( name = "customer"
+, uniqueConstraints = {
+        @UniqueConstraint(name = "customer_email_unique",
+                columnNames = "email")
+
+})
 public class Customer {
     public Customer(String name, String email, Integer age) {
         this.name = name;

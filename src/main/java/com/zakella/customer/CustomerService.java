@@ -16,7 +16,7 @@ public class CustomerService {
 
 //    private final CustomerMapper customerMapper;
 
-    public CustomerService(@Qualifier("jpa")
+    public CustomerService(@Qualifier("jdbc")
                            CustomerDAO customerDataAccessService
                          ) {
         this.customerDao = customerDataAccessService;;

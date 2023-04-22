@@ -12,20 +12,44 @@ Content-Type: application/json
 
 {
   "name": "Joe",
-  "email": "joe11@gmail.com",
+  "email": "joe111@gmail.com",
   "age": 52
 }
 
 ###
-DELETE http://localhost:8080/api/v1/customers/1
+DELETE http://localhost:8080/api/v1/customers/3
 
 ###
 GET localhost:8080/api/v1/customers
 
 ###
-PUT localhost:8080/api/v1/customers/1
+PUT localhost:8080/api/v1/customers/5
 Content-Type: application/json
 
 {
-  "age": 75
+  "id": 5,
+  "name": "Joe",
+  "email": "joe111@gmail.com",
+  "age": 54
 }
+
+###
+GET http://localhost:8080/api/v1/customers/16
+
+###
+DELETE http://localhost:8080/api/v1/customers/16
+
+###
+PUT localhost:8080/api/v1/customers/5
+Content-Type: application/json
+
+{
+  "id": 5,
+  "name": "Joe",
+  "email": "joe111@gmail.com",
+  "age": 88
+}
+
+###
+GET localhost:8080/api/v1/customers
+
