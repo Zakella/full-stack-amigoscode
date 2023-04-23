@@ -1,17 +1,16 @@
 package com.zakella.customer;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository("jpa")
-public class CustomerJPADataService implements CustomerDAO{
+public class CustomerJPADataAccessService implements CustomerDAO{
 
     private final CustomerRepository customerRepository;
 
-    public CustomerJPADataService(CustomerRepository customerRepository) {
+    public CustomerJPADataAccessService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
