@@ -1,7 +1,7 @@
 package com.zakella.customer;
 
 import com.zakella.exception.DuplicateResourceException;
-import com.zakella.exception.RecourseNotFoundException;
+import com.zakella.exception.ResourceNotFoundException;
 import com.zakella.exception.RequestValidationException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class CustomerService {
 
 //    private final CustomerMapper customerMapper;
 
-    public CustomerService(@Qualifier("jdbc")
+    public CustomerService(@Qualifier("jpa")
                            CustomerDAO customerDataAccessService
                          ) {
         this.customerDao = customerDataAccessService;;
@@ -25,8 +25,8 @@ public class CustomerService {
 
     public Customer getCustomer (Integer id){
         return customerDao.selectCustomerById(id)
-                .orElseThrow(()-> new RecourseNotFoundException(
-                        String.format("can find customer with id %s " , id)
+                .orElseThrow(()-> new ResourceNotFoundException(
+                        String.format("customer with id [%s] not found" , id)
                 ));
     }
 
@@ -38,7 +38,7 @@ public class CustomerService {
 
         if (customerDao.existsCustomerWithEmail(customerRegistrationRequest.email())){
             throw new DuplicateResourceException(String.format(
-                    "Email %s exists!", customerRegistrationRequest.email()
+                    "email already taken", customerRegistrationRequest.email()
             ));
         }
 
@@ -56,12 +56,12 @@ public class CustomerService {
 
 
         }
-        else throw new RecourseNotFoundException(
-                String.format("can find customer with id %s " , id)) ;
+        else throw new ResourceNotFoundException(
+                String.format("customer with id [%s] not found" , id)) ;
 
     }
 
-    public void updateCustomer(Integer id, UpdateRequest updateRequest) {
+    public void updateCustomer(Integer id, CustomerUpdateRequest updateRequest) {
 
         Customer customer = getCustomer(id);
 

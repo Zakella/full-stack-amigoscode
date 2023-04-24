@@ -1,5 +1,8 @@
 package com.zakella;
 
+import lombok.Data;
+
+@Data
 public class Customer {
 
     private Integer id;
@@ -15,6 +18,13 @@ public class Customer {
         this.email = email;
         this.age = age;
     }
+
+    public Customer(String name, String email, Integer age) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+    }
+
 
     public Customer() {
     }
