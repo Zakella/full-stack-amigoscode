@@ -4,15 +4,36 @@ services:
   db:
     container_name: amigos-code-fullstack
     image: postgres:14.1-alpine
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_DB: fullstack
       POSTGRES_USER : postgres
       POSTGRES_PASSWORD: 123
     ports:
-      - '5432:5432'
+      - '5332:5432'
+    networks:
+      -db:
     volumes:
       - db:/var/lib/postgresql/data
+
+
+  amigoscode-api:
+    container_name: amigoscode-api
+    image: zakella/amigoscode-api
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/customer
+    ports:
+      - "8088:8080"
+    networks:
+      - db
+    depends_on:
+      - db
+    restart: unless-stopped
+
+
+
+
+
 volumes:
   db:
     driver: local
