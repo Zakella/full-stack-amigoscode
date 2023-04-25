@@ -2,7 +2,7 @@ package com.zakella.journey;
 
 import com.github.javafaker.Faker;
 import com.github.javafaker.Name;
-import com.zakella.Customer;
+import com.zakella.customer.Customer;
 import com.zakella.customer.CustomerRegistrationRequest;
 import com.zakella.customer.CustomerUpdateRequest;
 import org.junit.jupiter.api.BeforeEach;

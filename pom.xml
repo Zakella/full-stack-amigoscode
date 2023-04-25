@@ -11,6 +11,10 @@
     <groupId>com.fullstack-app</groupId>
     <artifactId>full-stack-amigoscode</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <organization>
+        <name>zakella</name>
+        <url>https://amicoscode.com</url>
+    </organization>
     <name>full-stack-amigoscode</name>
     <description>full-stack-amigoscode</description>
     <properties>
@@ -209,12 +213,12 @@
                             </platform>
                         </platforms>
                     </from>
-<!--                    <to>-->
-<!--                        <image>docker.io/${docker.username}/${docker.image.name}:${docker.image.tag}</image>-->
-<!--                        <tags>-->
-<!--                            <tag>latest</tag>-->
-<!--                        </tags>-->
-<!--                    </to>-->
+                    <to>
+                        <image>docker.io/${project.organization.name}/${project.artifactId}:${project.version}</image>
+                        <tags>
+                            <tag>latest</tag>
+                        </tags>
+                    </to>
                 </configuration>
             </plugin>
         </plugins>
