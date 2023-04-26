@@ -1,0 +1,27 @@
+{
+  "AWSEBDockerrunVersion": 2,
+
+  "containerDefinitions": [
+    {
+      "name": "amigoscode-api",
+      "image": "zakella/amigoscode-api:latest",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 8080
+        }
+      ],
+      "enviroment" : [
+        {
+          "name": "SPRING_DATASOURCE_URL",
+          "value": "jdbc:postgresql://db:5432/customer"
+        }
+
+      ]
+
+
+    }
+  ]
+}
