@@ -1,6 +1,4 @@
-name: CI - Build Backend
-
-on:
+n:
   pull_request:
     branches:
       - main
@@ -9,31 +7,24 @@ on:
 
 jobs:
   build:
-    runs-on:
-      ubuntu-latest
+    runs-on: ubuntu-latest
     services:
-      # Label used to access the service container
       postgres:
-        # Docker Hub image
-        image: postgres:14.5
-        # Provide the password for postgres
+        image: postgres:14.1
         env:
-          POSTGRES_DB: fullstack
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: 123
+          POSTGRES_DB: fullstack
         ports:
           - 5332:5432
-        # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
     defaults:
       run:
-        working:directory: ./backend
-
+        working-directory: ./backend
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
@@ -41,7 +32,4 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'maven'
-      - name: "Build and run Unit/Integrations Test with Maven"
-      - run: mvn -nto -B verify
-
-
+      - name: Build and run Unit/Integration Tests with Maven
