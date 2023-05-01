@@ -48,3 +48,12 @@ jobs:
       - name: Build Package Push with Maven
         run: mvn -ntp -B verify -Ddocker.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} jib:build
 
+      - uses: alex-ac/github-action-ssh-docker-compose@master
+        name: Docker-Compose Remote Deployment
+        with:
+            ssh_host: 45.137.66.185
+            ssh_private_key: ${{ secrets.EXAMPLE_COM_SSH_PRIVATE_KEY }}
+            ssh_user: ${{ secrets.EXAMPLE_COM_SSH_USER }}
+            docker_compose_prefix: example_com
+
+
