@@ -15,9 +15,9 @@ jobs:
       postgres:
         image: postgres:14.1
         env:
-          POSTGRES_USER: amigoscode
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: customer
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 123
+          POSTGRES_DB: fullstack
         ports:
           - 5332:5432
         options:
@@ -25,9 +25,9 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      defaults:
-        run:
-          working-directory: ./backend
+    defaults:
+      run:
+        working-directory: ./backend
 
     steps:
       - uses: actions/checkout@v3
