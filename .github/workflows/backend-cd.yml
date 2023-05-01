@@ -45,12 +45,10 @@ jobs:
         id: build-number
         run: echo "BUILD_NUMBER=$(date '+%d.%m.%Y.%H.%M.%S')" >> $GITHUB_OUTPUT
 
-      - name: Build Package Push with Maven
-        run: | 
-         mvn -ntp -B verify -Ddocker.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} jib:build
-        
-        
-
+#      - name: Build Package Push with Maven
+#        run: |
+#         mvn -ntp -B verify -Ddocker.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} jib:build
+#
 
       - name: Deploying application to server
         uses: appleboy/ssh-action@master
@@ -59,15 +57,19 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd tests
-            rm -rf ./amigos-api
-            mkdir -p amigos-api
-            cd amigos-api
-            git init
-            git clone https://github.com/Zakella/full-stack-amigoscode.git
-            cd full-stack-amigoscode/
-            docker compose pull
-            docker compose down
-            docker compose up -d
+            cd /home/zakella/tests/deploytest3
+            git pull origin main
+            git status
+
+#            cd tests
+#            rm -rf ./amigos-api
+#            mkdir -p amigos-api
+#            cd amigos-api
+#            git init
+#            git clone https://github.com/Zakella/full-stack-amigoscode.git
+#            cd full-stack-amigoscode/
+#            docker compose pull
+#            docker compose down
+#            docker compose up -d
 
 
