@@ -55,7 +55,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY1 }}
 #          script: |
 #            cd ~/amigos-full-stack/full-stack-amigoscode/
 #            git pull origin main
