@@ -58,10 +58,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/amigos-full-stack/full-stack-amigoscode/
-            git pull origin main
-            git status
-            docker compose pull
-            docker compose up -d
+#            git pull origin main
+#            git status
+#            docker compose pull
+#            docker compose down
+#            docker compose up -d
 
 #            cd tests
 #            rm -rf ./amigos-api
