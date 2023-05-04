@@ -5,8 +5,8 @@ services:
     container_name: postgres
     image: postgres:14.1
     environment:
-      POSTGRES_USER: amigoscode
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
       PGDATA: /data/postgres
     volumes:
       - db:/data/postgres
@@ -19,7 +19,7 @@ services:
     container_name: amigoscode-api
     image: zakella/amigoscode-api
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://TODO:5432/customer
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/amigos
     ports:
       - "8088:8080"
     networks:
