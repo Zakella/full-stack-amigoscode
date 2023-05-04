@@ -3,9 +3,12 @@ server:
   error:
     include-message: always
 
+allowed-origins: "*"
+
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5332/fullstack
+#    url: jdbc:postgresql://127.0.0.1:5332/fullstack
+    url: jdbc:postgresql://45.137.66.185:5332/fullstack
     username: postgres
     password: 123
   jpa:

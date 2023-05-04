@@ -1,5 +1,20 @@
-INSERT INTO customer ( age, email, name)
-VALUES
-    (36,'za@gmail.com', 'Slava'),
-    (26,'Maria@gmail.com', 'Maria'),
-    (25,'Ivan@gmail.com', 'Ivan');
+insert into customer (name, email, age) values ('Albrecht', 'amackelworth0@360.cn', 66);
+insert into customer (name, email, age) values ('Mordecai', 'mallanby1@ebay.com', 74);
+insert into customer (name, email, age) values ('Giacinta', 'gbelk2@gizmodo.com', 45);
+insert into customer (name, email, age) values ('Odell', 'oromney3@i2i.jp', 39);
+insert into customer (name, email, age) values ('Mano', 'mdinnis4@tumblr.com', 69);
+insert into customer (name, email, age) values ('Patrizius', 'pgrint5@scribd.com', 52);
+insert into customer (name, email, age) values ('Corette', 'caleksashin6@purevolume.com', 45);
+insert into customer (name, email, age) values ('Noel', 'npossek7@weather.com', 27);
+insert into customer (name, email, age) values ('Prudy', 'pgeyton8@boston.com', 53);
+insert into customer (name, email, age) values ('Quintin', 'qdonisthorpe9@marketwatch.com', 22);
+insert into customer (name, email, age) values ('Marcelo', 'mscaddena@cnn.com', 49);
+insert into customer (name, email, age) values ('Shirlene', 'swyssb@booking.com', 61);
+insert into customer (name, email, age) values ('Walker', 'wgariochc@dion.ne.jp', 29);
+insert into customer (name, email, age) values ('Ethelind', 'elongridged@istockphoto.com', 79);
+insert into customer (name, email, age) values ('Sheeree', 'scanbye@ezinearticles.com', 80);
+insert into customer (name, email, age) values ('Maynord', 'mdrayef@about.com', 22);
+insert into customer (name, email, age) values ('Tanitansy', 'tlequeuxg@cpanel.net', 21);
+insert into customer (name, email, age) values ('Hailee', 'hnormandaleh@google.nl', 80);
+insert into customer (name, email, age) values ('Debera', 'dsailei@dot.gov', 76);
+insert into customer (name, email, age) values ('Patrick', 'phylandj@cnet.com', 70);
