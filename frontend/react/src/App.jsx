@@ -1,48 +1,16 @@
-import UserProfile from "./UserProfile.jsx";
 
-const name = "McKeller";
+import SidebarWithHeader from "./shared/SideBar.jsx";
 
-const users = [
-
-    {
-        name: "Slava", age: 36, gender: "male"
-    },
-
-    {
-        name: "Maria", age: 27, gender: "female"
-    },
-
-    {
-        name: "Joe", age: 54, gender: "male"
-    }
-
-
-]
-
-const UserProfiles = ({users}) => (
-    <div>
-        {
-            users.map((user, index) =>
-                (
-                    (<UserProfile
-                        key={index}
-                        name={user.name}
-                        age={user.age}
-                        gender={user.gender}
-                        imageNumber={index}
-                    />)
-
-                )
-            )
-        }
-    </div>
-)
-
-function App() {
+const App = ()=>{
 
     return (
-        <UserProfiles users={users}/>
+     <SidebarWithHeader>
+         {/*<Button colorScheme='blue'>Click me*/}
+
+         {/*</Button>*/}
+
+     </SidebarWithHeader>
     )
 }
 
-export default App
+export default App;
