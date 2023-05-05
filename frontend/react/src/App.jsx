@@ -1,27 +1,76 @@
-import SidebarWithHeader from "./shared/SideBar.jsx";
+import SidebarWithHeader from "./components/shared/SideBar.jsx";
 import {getCustomers} from "../services/client.js";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {Spinner, Text, Wrap, WrapItem} from "@chakra-ui/react";
+import CardWithImage from "./components/Card.jsx";
 
 const App = () => {
 
-    useEffect(() => {
-        getCustomers().then((res) => {
-            console.log(res)
-        }).catch(err => {
-                console.log(err);
-            }
-        )
-    }, [])
 
+    const [customers, setCustomers] = useState([]);
+
+    // eslint-disable-next-line no-unused-vars
+    const [loading, setLoading] = useState(false);
+
+    useEffect(
+         () => {
+             setLoading(true);
+            getCustomers()
+
+                .then(
+                    res => setCustomers(res.data)
+                )
+                .catch(err => {
+                        console.log(err);
+                    }
+                )
+                .finally(
+                    () => {
+                        setLoading(false);
+                    }
+                )
+        }
+    , [])
+    if (loading) {
+
+        return (<SidebarWithHeader>
+            <Spinner
+                thickness='4px'
+                speed='0.65s'
+                emptyColor='gray.200'
+                color='blue.500'
+                size='xl'
+            />
+
+        </SidebarWithHeader>)
+    }
+
+    if (customers.length <= 0) {
+        return (  <SidebarWithHeader>
+            <Text>
+                No customers available
+            </Text>
+        </SidebarWithHeader>);
+    }
 
     return (
-        <SidebarWithHeader>
-            {/*<Button colorScheme='blue'>Click me*/}
 
-            {/*</Button>*/}
+        <SidebarWithHeader>
+            <Wrap justify={"center"} spacing={"30px"}>
+                {
+                    customers.map((customer, index) => (
+
+                     <Wrap>
+                        <CardWithImage {...customer}/>
+                     </Wrap>
+
+                    ))
+                }
+            </Wrap>
 
         </SidebarWithHeader>
     )
+
 }
 
 export default App;

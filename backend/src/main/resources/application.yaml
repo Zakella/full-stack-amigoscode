@@ -3,7 +3,9 @@ server:
   error:
     include-message: always
 
-allowed-origins: "*"
+cors:
+  allowed-origins: "*"
+  allowed-methods: "*"
 
 spring:
   datasource:
