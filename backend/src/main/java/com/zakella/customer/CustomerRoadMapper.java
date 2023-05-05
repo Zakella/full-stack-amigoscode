@@ -15,6 +15,15 @@ public class CustomerRoadMapper implements RowMapper <Customer> {
         customer.setName(rs.getString("name"));
         customer.setEmail(rs.getString("email"));
         customer.setAge(rs.getInt("age"));
+
+        Customer.builder()
+                .id(rs.getInt("id"))
+                .name(rs.getString("name"))
+                .email(rs.getString("email"))
+                .age(rs.getInt("age"))
+                .gender(Gender.valueOf(rs.getString("gender")))
+                .build();
+
         return customer;
     }
 }

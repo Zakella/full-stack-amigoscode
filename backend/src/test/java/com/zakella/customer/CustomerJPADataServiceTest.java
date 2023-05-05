@@ -51,7 +51,12 @@ class CustomerJPADataServiceTest {
     @Test
     void itShouldInsertCustomer() {
         //given
-        Customer customer = new Customer("Joe", "joe@gmail.com", 20);
+        Customer customer = Customer.builder()
+                .name("Joe")
+                .email("joe@gmail.com")
+                .age(20)
+                .gender(Gender.Male)
+                .build();
         underTest.insertCustomer(customer);
         //when
         //then
@@ -96,7 +101,12 @@ class CustomerJPADataServiceTest {
     @Test
     void itShouldUpdateCustomer() {
         //given
-        Customer customer = new Customer("Joe", "joe@gmail.com", 20);
+        Customer customer = Customer.builder()
+                .name("Joe")
+                .email("joe@gmail.com")
+                .age(20)
+                .gender(Gender.Male)
+                .build();
         underTest.updateCustomer(customer);
         //when
         //then

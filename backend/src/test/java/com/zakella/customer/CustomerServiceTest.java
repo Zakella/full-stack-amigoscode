@@ -8,6 +8,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
+import java.util.UUID;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.*;
@@ -35,7 +37,15 @@ class CustomerServiceTest {
     void canGetCustomer() {
         // Given
         int id = 10;
-        Customer customer = new Customer(id, "Alex", "alex@gmail.com", 19);
+
+
+
+        Customer customer =  Customer.builder()
+                .name("Alex")
+                .email("alex@gmail.com")
+                .age(19)
+                .gender(Gender.Male)
+                .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
 
@@ -69,7 +79,7 @@ class CustomerServiceTest {
 
         when(customerDao.existsCustomerWithEmail(email)).thenReturn(true);
 
-        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19);
+        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19, Gender.Male);
 
         // When
         assertThatThrownBy(() -> underTest.addCustomer(request)).isInstanceOf(DuplicateResourceException.class).hasMessage("email already taken");
@@ -97,7 +107,7 @@ class CustomerServiceTest {
 
         when(customerDao.existsCustomerWithEmail(email)).thenReturn(false);
 
-        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19);
+        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19, Gender.Male);
 
 
         // When
@@ -148,7 +158,12 @@ class CustomerServiceTest {
     void canUpdateAllCustomersProperties() {
         // Given
         int id = 10;
-        Customer customer = new Customer(id, "Alex", "alex@gmail.com", 19);
+        Customer customer = Customer.builder()
+                .name("Alex")
+                .email("alex@gmail.com")
+                .age(19)
+                .gender(Gender.Male)
+                .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         String newEmail = "alexandro@amigoscode.com";
@@ -175,7 +190,12 @@ class CustomerServiceTest {
     void canUpdateOnlyCustomerName() {
         // Given
         int id = 10;
-        Customer customer = new Customer(id, "Alex", "alex@gmail.com", 19);
+        Customer customer =  Customer.builder()
+                .name("Alex")
+                .email("alex@gmail.com")
+                .age(19)
+                .gender(Gender.Male)
+                .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         CustomerUpdateRequest updateRequest = new CustomerUpdateRequest("Alexandro", null, null);
@@ -198,7 +218,12 @@ class CustomerServiceTest {
     void canUpdateOnlyCustomerEmail() {
         // Given
         int id = 10;
-        Customer customer = new Customer(id, "Alex", "alex@gmail.com", 19);
+        Customer customer =  Customer.builder()
+                .name("Alex")
+                .email("alex@gmail.com")
+                .age(19)
+                .gender(Gender.Male)
+                .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         String newEmail = "alexandro@amigoscode.com";
@@ -225,7 +250,12 @@ class CustomerServiceTest {
     void canUpdateOnlyCustomerAge() {
         // Given
         int id = 10;
-        Customer customer = new Customer(id, "Alex", "alex@gmail.com", 19);
+        Customer customer =  Customer.builder()
+                .name("Alex")
+                .email("alex@gmail.com")
+                .age(19)
+                .gender(Gender.Male)
+                .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         CustomerUpdateRequest updateRequest = new CustomerUpdateRequest(null, null, 22);
@@ -248,7 +278,12 @@ class CustomerServiceTest {
     void willThrowWhenTryingToUpdateCustomerEmailWhenAlreadyTaken() {
         // Given
         int id = 10;
-        Customer customer = new Customer(id, "Alex", "alex@gmail.com", 19);
+        Customer customer =  Customer.builder()
+                .name("Alex")
+                .email("alex@gmail.com")
+                .age(19)
+                .gender(Gender.Male)
+                .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         String newEmail = "alexandro@amigoscode.com";
@@ -268,7 +303,12 @@ class CustomerServiceTest {
     void willThrowWhenCustomerUpdateHasNoChanges() {
         // Given
         int id = 10;
-        Customer customer = new Customer(id, "Alex", "alex@gmail.com", 19);
+        Customer customer =  Customer.builder()
+                .name("Alex")
+                .email("alex@gmail.com")
+                .age(19)
+                .gender(Gender.Male)
+                .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         CustomerUpdateRequest updateRequest = new CustomerUpdateRequest(customer.getName(), customer.getEmail(), customer.getAge());

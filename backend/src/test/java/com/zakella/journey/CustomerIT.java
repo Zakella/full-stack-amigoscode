@@ -5,6 +5,7 @@ import com.github.javafaker.Name;
 import com.zakella.customer.Customer;
 import com.zakella.customer.CustomerRegistrationRequest;
 import com.zakella.customer.CustomerUpdateRequest;
+import com.zakella.customer.Gender;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ class CustomerIT {
 
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age
+                name, email, age, Gender.Female
         );
         // send a post request
 
@@ -78,11 +79,14 @@ class CustomerIT {
 
 
         // make sure that customer is present
-        Customer expectedCustomer = new Customer(
-                name,
-                email,
-                age
-        );
+        Customer expectedCustomer = Customer.builder()
+                .name(name)
+                .email(email)
+                .age(age)
+                .gender(Gender.Male)
+                .build();
+
+
 
        assertThat(allCustomers)
                .usingRecursiveFieldByFieldElementComparatorIgnoringFields("id")
@@ -124,11 +128,11 @@ class CustomerIT {
 
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age
+                name, email, age, Gender.Male
         );
 
         CustomerRegistrationRequest request2 = new CustomerRegistrationRequest(
-                name, email + ".uk", age
+                name, email + ".uk", age, Gender.Female
         );
 
         // send a post request to create customer 1
@@ -201,7 +205,7 @@ class CustomerIT {
 
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age
+                name, email, age, Gender.Male
         );
 
         // send a post request
@@ -261,12 +265,15 @@ class CustomerIT {
                 .returnResult()
                 .getResponseBody();
 
-        Customer expected = new Customer(
-                id,
-                newName,
-                email,
-                age
-        );
+        Customer expected =  Customer.builder()
+                .id(id)
+                .name(name)
+                .email(email)
+                .age(age)
+                .gender(Gender.Male)
+                .build();;
+
+
 
 //        assertThat(updatedCustomer).isEqualTo(expected);todo
     }

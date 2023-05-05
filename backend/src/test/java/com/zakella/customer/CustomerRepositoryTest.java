@@ -30,10 +30,12 @@ class CustomerRepositoryTest extends AbstractTestcontainers {
     void itShouldExistsCustomerByEmail() {
 
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
-        Customer customer = new Customer(
-                FAKER.name().fullName(),
-                email,
-                20);
+        Customer customer = Customer.builder()
+                .name(FAKER.name().fullName())
+                .email(email)
+                .age(20)
+                .gender(Gender.Male)
+                .build();
 
         underTest.save(customer);
 
@@ -61,10 +63,12 @@ class CustomerRepositoryTest extends AbstractTestcontainers {
     void itShouldExistsCustomerById() {
         // Given
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
-        Customer customer = new Customer(
-                FAKER.name().fullName(),
-                email,
-                20);
+        Customer customer = Customer.builder()
+                .name(FAKER.name().fullName())
+                .email(email)
+                .age(20)
+                .gender(Gender.Male)
+                .build();
 
         underTest.save(customer);
 

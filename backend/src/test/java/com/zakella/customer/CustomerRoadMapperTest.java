@@ -32,12 +32,19 @@ class CustomerRoadMapperTest {
         when(resultSet.getString("name")).thenReturn("Slava");
         when(resultSet.getString("email")).thenReturn("zakella@test.com");
         when(resultSet.getInt("age")).thenReturn(20);
+//        when(resultSet.ge("age")).thenReturn(20);
 
         //when
         Customer actual = underTest.mapRow(resultSet, 1);
         //then
 
-        Customer expectedCustomer = new Customer(1, "Slava", "zakella@test.com", 20 );
+        Customer expectedCustomer = Customer.builder()
+                .id(1)
+                .name("Slava")
+                .email("zakella@test.com")
+                .age(20)
+                .gender(Gender.Male)
+                .build();
 
         assertThat(expectedCustomer).isEqualTo(actual);
 

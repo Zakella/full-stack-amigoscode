@@ -1,31 +1,26 @@
 package com.zakella.customer;
+
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.Objects;
-
-
-@Entity
-@Table( name = "customer"
-, uniqueConstraints = {
-        @UniqueConstraint(name = "customer_email_unique",
-                columnNames = "email")
-
-})
-
-
-@Data
-@NoArgsConstructor
-
+@Entity()
+@Table(name = "customer")
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@Builder
+@AllArgsConstructor
 public class Customer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private String email;
-    private String age;
-    private Gender gender;
+    private  String name;
+    private  String email;
+    private  Integer age;
 
+    @Enumerated(EnumType.STRING)
+    private  Gender gender;
 
 }
