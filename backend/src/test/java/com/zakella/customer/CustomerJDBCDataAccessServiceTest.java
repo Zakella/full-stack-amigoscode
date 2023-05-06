@@ -52,7 +52,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = Customer.builder()
                 .name(FAKER.name().fullName())
-                .email(FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID())
+                .email(email)
                 .age(20)
                 .gender(Gender.Male)
                 .build();;
@@ -103,7 +103,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = Customer.builder()
                 .name(FAKER.name().fullName())
-                .email(FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID())
+                .email(email)
                 .age(20)
                 .gender(Gender.Male)
                 .build();;
@@ -124,7 +124,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = Customer.builder()
                 .name(FAKER.name().fullName())
-                .email(FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID())
+                .email(email)
                 .age(20)
                 .gender(Gender.Male)
                 .build();;
@@ -151,7 +151,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = Customer.builder()
                 .name(FAKER.name().fullName())
-                .email(FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID())
+                .email(email)
                 .age(20)
                 .gender(Gender.Male)
                 .build();;
@@ -181,7 +181,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = Customer.builder()
                 .name(FAKER.name().fullName())
-                .email(FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID())
+                .email(email)
                 .age(20)
                 .gender(Gender.Male)
                 .build();;
@@ -211,7 +211,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         String email = FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID();
         Customer customer = Customer.builder()
                 .name(FAKER.name().fullName())
-                .email(FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID())
+                .email(email)
                 .age(20)
                 .gender(Gender.Male)
                 .build();;

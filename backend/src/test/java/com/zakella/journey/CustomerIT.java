@@ -51,7 +51,7 @@ class CustomerIT {
 
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, Gender.Female
+                name, email, age, Gender.Male
         );
         // send a post request
 

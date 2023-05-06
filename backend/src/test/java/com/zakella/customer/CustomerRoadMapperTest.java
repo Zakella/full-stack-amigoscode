@@ -32,6 +32,7 @@ class CustomerRoadMapperTest {
         when(resultSet.getString("name")).thenReturn("Slava");
         when(resultSet.getString("email")).thenReturn("zakella@test.com");
         when(resultSet.getInt("age")).thenReturn(20);
+        when(resultSet.getString("gender")).thenReturn(Gender.Male.name());
 //        when(resultSet.ge("age")).thenReturn(20);
 
         //when

@@ -10,13 +10,7 @@ import java.sql.SQLException;
 public class CustomerRoadMapper implements RowMapper <Customer> {
     @Override
     public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Customer customer = new Customer();
-        customer.setId(rs.getInt("id"));
-        customer.setName(rs.getString("name"));
-        customer.setEmail(rs.getString("email"));
-        customer.setAge(rs.getInt("age"));
-
-        Customer.builder()
+        Customer customer = Customer.builder()
                 .id(rs.getInt("id"))
                 .name(rs.getString("name"))
                 .email(rs.getString("email"))

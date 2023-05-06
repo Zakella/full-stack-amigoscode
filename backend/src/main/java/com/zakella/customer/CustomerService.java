@@ -42,11 +42,14 @@ public class CustomerService {
             ));
         }
 
-        Customer.builder()
+        Customer customer = Customer.builder()
                 .name(customerRegistrationRequest.name())
                 .email(customerRegistrationRequest.email())
                 .age(customerRegistrationRequest.age())
-                .gender(customerRegistrationRequest.gender());
+                .gender(customerRegistrationRequest.gender())
+                .build();
+
+        customerDao.insertCustomer(customer);
     }
 
     public void deleteCustomerById(Integer id) {
