@@ -132,7 +132,7 @@ class CustomerIT {
         );
 
         CustomerRegistrationRequest request2 = new CustomerRegistrationRequest(
-                name, email + ".uk", age, Gender.Female
+                name, email + ".uk", age, Gender.Male
         );
 
         // send a post request to create customer 1

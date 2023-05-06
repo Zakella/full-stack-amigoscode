@@ -61,7 +61,10 @@ const App = () => {
                     customers.map((customer, index) => (
 
                      <Wrap>
-                        <CardWithImage {...customer}/>
+                        <CardWithImage
+                            {...customer}
+                            imageRandom={index}
+                        />
                      </Wrap>
 
                     ))

@@ -1,2 +1,2 @@
   ALTER TABLE customer
-  ADD COLUMN gender VARCHAR (20)
+  ADD COLUMN gender VARCHAR (20) NOT NULL DEFAULT 'Unknown'
