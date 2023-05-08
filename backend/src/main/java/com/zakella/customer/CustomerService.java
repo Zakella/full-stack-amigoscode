@@ -49,6 +49,7 @@ public class CustomerService {
                 .gender(customerRegistrationRequest.gender())
                 .build();
 
+        customerDao.insertCustomer(customer);
     }
 
     public void deleteCustomerById(Integer id) {
