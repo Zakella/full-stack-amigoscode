@@ -7,23 +7,21 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
+      POSTGRES_DB: fullstack
       PGDATA: /data/postgres
     volumes:
       - db:/data/postgres
     ports:
-      - "5332:5432"
-    networks:
-      - db
+      - "5432:5432"
     restart: unless-stopped
+
   amigoscode-api:
-    container_name: amigoscode-api
-    image: zakella/amigoscode-api
+    container_name: amigos-backend
+    image: amigos-backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/fullstack
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/fullstack
     ports:
-      - "8088:8080"
-    networks:
-      - db
+      - "8088:8088"
     depends_on:
       - db
     restart: unless-stopped
@@ -36,21 +34,10 @@ services:
       args:
         api_base_url: http://localhost:8088
     ports:
-      - "3000:5173"
+      - "5173:5173"
     depends_on:
-      - amigoscode-api
+      -  amigoscode-api
     restart: unless-stopped
-
-    networks:
-      - db
-
-
-
-
-
-networks:
-  db:
-    driver: bridge
 
 volumes:
   db:
