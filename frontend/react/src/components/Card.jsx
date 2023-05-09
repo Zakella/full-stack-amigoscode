@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 
 export default function CardWithImage({id, name, email, age, gender, imageRandom}) {
+
     const genderRandom = gender === "Male" ? "men" : "women";
     return (
 
