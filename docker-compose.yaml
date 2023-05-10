@@ -7,10 +7,11 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
-      POSTGRES_DB: fullstack
+      POSTGRES_DB: postgres
       PGDATA: /data/postgres
     volumes:
       - db:/data/postgres
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sq
     ports:
       - "5432:5432"
     restart: unless-stopped
@@ -18,6 +19,11 @@ services:
   amigoscode-api:
     container_name: amigos-backend
     image: amigos-backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+      args:
+       APP_NAME: amigos-backend
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/fullstack
     ports:
@@ -28,11 +34,13 @@ services:
 
   amigoscode-react:
     container_name: amigoscode-react
-    image: zakella/amigoscode-react
+    image: amigoscode-react
     build:
       context: frontend/react
+      dockerfile: Dockerfile
       args:
         api_base_url: http://localhost:8088
+        APP_NAME: amigoscode-react
     ports:
       - "5173:5173"
     depends_on:

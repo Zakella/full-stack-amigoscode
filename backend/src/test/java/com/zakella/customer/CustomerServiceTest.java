@@ -44,6 +44,7 @@ class CustomerServiceTest {
                 .email("alex@gmail.com")
                 .age(19)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -163,6 +164,7 @@ class CustomerServiceTest {
                 .email("alex@gmail.com")
                 .age(19)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -195,6 +197,7 @@ class CustomerServiceTest {
                 .email("alex@gmail.com")
                 .age(19)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -223,6 +226,7 @@ class CustomerServiceTest {
                 .email("alex@gmail.com")
                 .age(19)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -255,6 +259,7 @@ class CustomerServiceTest {
                 .email("alex@gmail.com")
                 .age(19)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -283,6 +288,7 @@ class CustomerServiceTest {
                 .email("alex@gmail.com")
                 .age(19)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
@@ -308,6 +314,7 @@ class CustomerServiceTest {
                 .email("alex@gmail.com")
                 .age(19)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 

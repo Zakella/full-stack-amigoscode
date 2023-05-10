@@ -33,6 +33,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .email(FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID())
                 .age(20)
                 .gender(Gender.Male)
+                .password("password")
                 .build();
 
         underTest.insertCustomer(customer);
@@ -55,6 +56,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .email(email)
                 .age(20)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         underTest.insertCustomer(customer);
 
@@ -106,6 +108,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .email(email)
                 .age(20)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         underTest.insertCustomer(customer);
         //when
@@ -127,6 +130,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .email(email)
                 .age(20)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         underTest.insertCustomer(customer);
 
@@ -154,6 +158,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .email(email)
                 .age(20)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         underTest.insertCustomer(customer);
 
@@ -184,6 +189,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .email(email)
                 .age(20)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         underTest.insertCustomer(customer);
 
@@ -214,6 +220,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .email(email)
                 .age(20)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
         underTest.insertCustomer(customer);
 

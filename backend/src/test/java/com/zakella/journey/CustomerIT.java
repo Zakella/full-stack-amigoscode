@@ -84,6 +84,7 @@ class CustomerIT {
                 .email(email)
                 .age(age)
                 .gender(Gender.Male)
+                .password("password")
                 .build();
 
 
@@ -271,6 +272,7 @@ class CustomerIT {
                 .email(email)
                 .age(age)
                 .gender(Gender.Male)
+                .password("password")
                 .build();;
 
 

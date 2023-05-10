@@ -35,6 +35,7 @@ class CustomerRepositoryTest extends AbstractTestcontainers {
                 .email(email)
                 .age(20)
                 .gender(Gender.Male)
+                .password("password")
                 .build();
 
         underTest.save(customer);
@@ -68,6 +69,7 @@ class CustomerRepositoryTest extends AbstractTestcontainers {
                 .email(email)
                 .age(20)
                 .gender(Gender.Male)
+                .password("password")
                 .build();
 
         underTest.save(customer);

@@ -1,16 +1,23 @@
 package com.zakella.customer;
 
+import com.zakella.jwt.JWTUtil;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 
 @RestController
 @RequestMapping(path = "api/v1/customers")
 public class CustomerController {
 
+    private final JWTUtil jwtUtil;
+
     private final CustomerService customerService;
 
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(JWTUtil jwtUtil, CustomerService customerService) {
+        this.jwtUtil = jwtUtil;
         this.customerService = customerService;
     }
 
@@ -25,8 +32,13 @@ public class CustomerController {
     }
 
     @PostMapping
-    public void registerCustomer(@RequestBody CustomerRegistrationRequest CustomerRegistrationRequest) {
-        customerService.addCustomer(CustomerRegistrationRequest);
+    public ResponseEntity<?> registerCustomer(@RequestBody CustomerRegistrationRequest request) {
+        customerService.addCustomer(request);
+        String jwtToken = jwtUtil.issueToken(request.email(), "ROLE_USER");
+        return ResponseEntity.ok()
+                .header(HttpHeaders.AUTHORIZATION, jwtToken)
+                .build();
+
     }
 
     @DeleteMapping("/{id}")
