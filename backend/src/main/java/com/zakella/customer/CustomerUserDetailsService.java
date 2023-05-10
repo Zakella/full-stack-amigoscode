@@ -7,11 +7,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerUserDetailService implements UserDetailsService {
+public class CustomerUserDetailsService implements UserDetailsService {
 
     private final CustomerDAO customerDAO;
 
-    public CustomerUserDetailService( @Qualifier("jpa") CustomerDAO customerDAO) {
+    public CustomerUserDetailsService(@Qualifier("jpa") CustomerDAO customerDAO) {
         this.customerDAO = customerDAO;
     }
 

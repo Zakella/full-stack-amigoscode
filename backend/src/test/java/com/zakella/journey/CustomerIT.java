@@ -51,8 +51,8 @@ class CustomerIT {
 
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, Gender.Male
-        );
+                name, email, age, Gender.Male,
+                "password");
         // send a post request
 
         webTestClient.post()
@@ -129,12 +129,12 @@ class CustomerIT {
 
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, Gender.Male
-        );
+                name, email, age, Gender.Male,
+                "password");
 
         CustomerRegistrationRequest request2 = new CustomerRegistrationRequest(
-                name, email + ".uk", age, Gender.Male
-        );
+                name, email + ".uk", age, Gender.Male,
+                "password");
 
         // send a post request to create customer 1
         webTestClient.post()
@@ -206,8 +206,8 @@ class CustomerIT {
 
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, Gender.Male
-        );
+                name, email, age, Gender.Male,
+                "password");
 
         // send a post request
         webTestClient.post()

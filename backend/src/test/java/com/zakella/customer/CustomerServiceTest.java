@@ -12,9 +12,9 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.*;
-
-
 import com.zakella.exception.ResourceNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ExtendWith(MockitoExtension.class)
 class CustomerServiceTest {
@@ -23,11 +23,13 @@ class CustomerServiceTest {
     CustomerDAO customerDao;
 
     CustomerService underTest;
+    @Mock
+    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
     @BeforeEach
     void setUp() {
-        underTest = new CustomerService(customerDao);
+        underTest = new CustomerService(customerDao, passwordEncoder);
     }
 
 
@@ -79,7 +81,7 @@ class CustomerServiceTest {
 
         when(customerDao.existsCustomerWithEmail(email)).thenReturn(true);
 
-        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19, Gender.Male);
+        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19, Gender.Male, "password");
 
         // When
         assertThatThrownBy(() -> underTest.addCustomer(request)).isInstanceOf(DuplicateResourceException.class).hasMessage("email already taken");
@@ -107,8 +109,11 @@ class CustomerServiceTest {
 
         when(customerDao.existsCustomerWithEmail(email)).thenReturn(false);
 
-        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19, Gender.Male);
 
+        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19, Gender.Male, "password");
+
+        String passHash = "aaa111222243444";
+        when(passwordEncoder.encode("password")).thenReturn(passHash);
 
         // When
         underTest.addCustomer(request);
@@ -125,6 +130,7 @@ class CustomerServiceTest {
         assertThat(capturedCustomer.getEmail()).isEqualTo(request.email());
         assertThat(capturedCustomer.getAge()).isEqualTo(request.age());
         assertThat(capturedCustomer.getGender()).isEqualTo(request.gender());
+        assertThat(capturedCustomer.getPassword()).isEqualTo(passHash);
 
     }
 

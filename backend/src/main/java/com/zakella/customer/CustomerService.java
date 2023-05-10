@@ -4,6 +4,7 @@ import com.zakella.exception.DuplicateResourceException;
 import com.zakella.exception.ResourceNotFoundException;
 import com.zakella.exception.RequestValidationException;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,14 +13,17 @@ import java.util.List;
 public class CustomerService {
 
     private final CustomerDAO customerDao;
+    private final PasswordEncoder passwordEncoder;
 
 
 //    private final CustomerMapper customerMapper;
 
     public CustomerService(@Qualifier("jpa")
-                           CustomerDAO customerDataAccessService
-                         ) {
-        this.customerDao = customerDataAccessService;;
+                           CustomerDAO customerDataAccessService,
+                           PasswordEncoder passwordEncoder) {
+        this.customerDao = customerDataAccessService;
+        this.passwordEncoder = passwordEncoder;
+        ;
 
     }
 
@@ -46,6 +50,9 @@ public class CustomerService {
                 .name(customerRegistrationRequest.name())
                 .email(customerRegistrationRequest.email())
                 .age(customerRegistrationRequest.age())
+                .password(
+                        passwordEncoder.encode(customerRegistrationRequest.password())
+                )
                 .gender(customerRegistrationRequest.gender())
                 .build();
 
