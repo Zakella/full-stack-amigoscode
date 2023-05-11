@@ -3,11 +3,13 @@ package com.zakella.customer;
 import com.zakella.exception.DuplicateResourceException;
 import com.zakella.exception.ResourceNotFoundException;
 import com.zakella.exception.RequestValidationException;
+import com.zakella.mapStruct.CustomerMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -27,15 +29,19 @@ public class CustomerService {
 
     }
 
-    public Customer getCustomer (Integer id){
-        return customerDao.selectCustomerById(id)
+    public CustomerDTO getCustomer (Integer id){
+        Customer customer = customerDao.selectCustomerById(id)
                 .orElseThrow(()-> new ResourceNotFoundException(
                         String.format("customer with id [%s] not found" , id)
                 ));
+        return CustomerMapper.INSTANCE.customerToCustomerDTO(customer);
     }
 
-    public List<Customer> getAllCustomers(){
-        return customerDao.selectAllCustomers();
+    public List<CustomerDTO> getAllCustomers(){
+        return customerDao.selectAllCustomers()
+                .stream()
+                .map(CustomerMapper.INSTANCE::customerToCustomerDTO)
+                .collect(Collectors.toList());
     }
 
     public void addCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
@@ -72,7 +78,13 @@ public class CustomerService {
 
     public void updateCustomer(Integer id, CustomerUpdateRequest updateRequest) {
 
-        Customer customer = getCustomer(id);
+        Customer customer = customerDao.selectCustomerById(id)
+                .orElseThrow(()-> new ResourceNotFoundException(
+                        String.format("customer with id [%s] not found" , id)
+                ));
+
+
+
 
         boolean changes = false;
 

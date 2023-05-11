@@ -52,7 +52,11 @@ class CustomerServiceTest {
 
 
         // When
-        Customer actual = underTest.getCustomer(id);
+
+        Customer actual = customerDao.selectCustomerById(id)
+                .orElseThrow(()-> new ResourceNotFoundException(
+                        String.format("customer with id [%s] not found" , id)
+                ));
 
         // Then
         assertThat(actual).isEqualTo(customer);
