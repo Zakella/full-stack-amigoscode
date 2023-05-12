@@ -70,7 +70,7 @@ GET localhost:8088/api/v1/customers
 
 
 ###
-POST localhost:9999/api/v1/customers
+POST localhost:8088/api/v1/customers
 Content-Type: application/json
 
 {

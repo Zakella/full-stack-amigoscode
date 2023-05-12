@@ -28,7 +28,8 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public CustomerDTO getCustomerByI(@PathVariable(name = "id") Integer id) {
-        return customerService.getCustomer(id);
+        CustomerDTO customerDTO =  customerService.getCustomer(id);
+        return customerDTO;
     }
 
     @PostMapping

@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,11 +31,12 @@ public class CustomerService {
     }
 
     public CustomerDTO getCustomer (Integer id){
-        Customer customer = customerDao.selectCustomerById(id)
-                .orElseThrow(()-> new ResourceNotFoundException(
-                        String.format("customer with id [%s] not found" , id)
-                ));
-        return CustomerMapper.INSTANCE.customerToCustomerDTO(customer);
+
+        return    CustomerMapper.INSTANCE.customerToCustomerDTO(
+                customerDao.selectCustomerById(id)
+                        .orElseThrow(() -> new ResourceNotFoundException(
+                                "customer with id [%s] not found".formatted(id)))
+        );
     }
 
     public List<CustomerDTO> getAllCustomers(){
