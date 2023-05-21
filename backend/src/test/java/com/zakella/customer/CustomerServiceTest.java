@@ -45,7 +45,7 @@ class CustomerServiceTest {
                 .name("Alex")
                 .email("alex@gmail.com")
                 .age(19)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
@@ -85,7 +85,7 @@ class CustomerServiceTest {
 
         when(customerDao.existsCustomerWithEmail(email)).thenReturn(true);
 
-        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19, Gender.Male, "password");
+        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19, Gender.MALE, "password");
 
         // When
         assertThatThrownBy(() -> underTest.addCustomer(request)).isInstanceOf(DuplicateResourceException.class).hasMessage("email already taken");
@@ -114,7 +114,7 @@ class CustomerServiceTest {
         when(customerDao.existsCustomerWithEmail(email)).thenReturn(false);
 
 
-        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19, Gender.Male, "password");
+        CustomerRegistrationRequest request = new CustomerRegistrationRequest("Alex", email, 19, Gender.MALE, "password");
 
         String passHash = "aaa111222243444";
         when(passwordEncoder.encode("password")).thenReturn(passHash);
@@ -173,7 +173,7 @@ class CustomerServiceTest {
                 .name("Alex")
                 .email("alex@gmail.com")
                 .age(19)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
@@ -206,7 +206,7 @@ class CustomerServiceTest {
                 .name("Alex")
                 .email("alex@gmail.com")
                 .age(19)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
@@ -235,7 +235,7 @@ class CustomerServiceTest {
                 .name("Alex")
                 .email("alex@gmail.com")
                 .age(19)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
@@ -268,7 +268,7 @@ class CustomerServiceTest {
                 .name("Alex")
                 .email("alex@gmail.com")
                 .age(19)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
@@ -297,7 +297,7 @@ class CustomerServiceTest {
                 .name("Alex")
                 .email("alex@gmail.com")
                 .age(19)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
@@ -323,7 +323,7 @@ class CustomerServiceTest {
                 .name("Alex")
                 .email("alex@gmail.com")
                 .age(19)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));

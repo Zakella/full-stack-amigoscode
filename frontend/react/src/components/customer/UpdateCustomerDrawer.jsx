@@ -9,7 +9,6 @@ import {
     DrawerOverlay,
     useDisclosure
 } from "@chakra-ui/react";
-import CreateCustomerForm from "./CreateCustomerForm.jsx";
 import UpdateCustomerForm from "./UpdateCustomerForm.jsx";
 
 const CloseIcon = () => "x";
@@ -48,12 +47,12 @@ const UpdateCustomerDrawer = ({ fetchCustomers, initialValues, customerId }) => 
                         leftIcon={<CloseIcon/>}
                         colorScheme={"teal"}
                         onClick={onClose}>
-                        Close
+                    Close
                     </Button>
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>
-    </>
+        </>
 
 }
 

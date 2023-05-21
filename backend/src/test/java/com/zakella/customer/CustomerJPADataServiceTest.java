@@ -55,7 +55,7 @@ class CustomerJPADataServiceTest {
                 .name("Joe")
                 .email("joe@gmail.com")
                 .age(20)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();
         underTest.insertCustomer(customer);
@@ -106,7 +106,7 @@ class CustomerJPADataServiceTest {
                 .name("Joe")
                 .email("joe@gmail.com")
                 .age(20)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();
         underTest.updateCustomer(customer);
