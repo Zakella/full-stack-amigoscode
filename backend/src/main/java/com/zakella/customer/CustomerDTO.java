@@ -9,6 +9,4 @@ public record CustomerDTO (Integer id,
                            Gender gender,
                            List<String> roles
 
-){
-
-}
+){ }

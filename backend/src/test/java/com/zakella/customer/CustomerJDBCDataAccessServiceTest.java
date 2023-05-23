@@ -32,7 +32,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .name(FAKER.name().fullName())
                 .email(FAKER.internet().safeEmailAddress() + "-" + UUID.randomUUID())
                 .age(20)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();
 
@@ -55,7 +55,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .name(FAKER.name().fullName())
                 .email(email)
                 .age(20)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         underTest.insertCustomer(customer);
@@ -107,7 +107,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .name(FAKER.name().fullName())
                 .email(email)
                 .age(20)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         underTest.insertCustomer(customer);
@@ -129,7 +129,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .name(FAKER.name().fullName())
                 .email(email)
                 .age(20)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         underTest.insertCustomer(customer);
@@ -157,7 +157,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .name(FAKER.name().fullName())
                 .email(email)
                 .age(20)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         underTest.insertCustomer(customer);
@@ -188,7 +188,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .name(FAKER.name().fullName())
                 .email(email)
                 .age(20)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         underTest.insertCustomer(customer);
@@ -219,7 +219,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .name(FAKER.name().fullName())
                 .email(email)
                 .age(20)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();;
         underTest.insertCustomer(customer);

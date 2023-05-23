@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
@@ -56,7 +55,7 @@ class CustomerIT {
 
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, Gender.Male,
+                name, email, age, Gender.MALE,
                 "password");
         // send a post request
 
@@ -89,11 +88,12 @@ class CustomerIT {
 
         assertThat(allCustomers).isNotNull();
 
+
         int id = allCustomers.stream()
                 .filter(customer -> customer.email().equals(email))
                 .map(CustomerDTO::id)
                 .findFirst()
-                .orElseThrow();
+                .get();
 
 
 //         make sure that customer is present
@@ -102,7 +102,7 @@ class CustomerIT {
                 .name(name)
                 .email(email)
                 .age(age)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build());
 
@@ -133,7 +133,7 @@ class CustomerIT {
 //        int age = random.nextInt(1, 100);
         int age = 36;
 
-        Gender gender = age % 2 == 0 ? Gender.Male : Gender.Female;
+        Gender gender = age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
                 name, email, age, gender, "password"
@@ -185,7 +185,7 @@ class CustomerIT {
                 .filter(customer -> customer.email().equals(email))
                 .map(CustomerDTO::id)
                 .findFirst()
-                .orElseThrow();
+                .get();
 
         // customer 2 deletes customer 1
         webTestClient.delete()
@@ -219,7 +219,7 @@ class CustomerIT {
 
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name, email, age, Gender.Male,
+                name, email, age, Gender.MALE,
                 "password");
 
         // send a post request
@@ -254,7 +254,7 @@ class CustomerIT {
                 .filter(customer -> customer.email().equals(email))
                 .map(CustomerDTO::id)
                 .findFirst()
-                .orElseThrow();
+                .get();
 
         // update customer
 
@@ -295,7 +295,7 @@ class CustomerIT {
                 .name("Ali")
                 .email(email)
                 .age(age)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build());
 

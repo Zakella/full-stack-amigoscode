@@ -33,7 +33,7 @@ class CustomerRoadMapperTest {
         when(resultSet.getString("email")).thenReturn("zakella@test.com");
         when(resultSet.getInt("age")).thenReturn(20);
         when(resultSet.getString("password")).thenReturn("password");
-        when(resultSet.getString("gender")).thenReturn(Gender.Male.name());
+        when(resultSet.getString("gender")).thenReturn(Gender.MALE.name());
 //        when(resultSet.ge("age")).thenReturn(20);
 
         //when
@@ -45,7 +45,7 @@ class CustomerRoadMapperTest {
                 .name("Slava")
                 .email("zakella@test.com")
                 .age(20)
-                .gender(Gender.Male)
+                .gender(Gender.MALE)
                 .password("password")
                 .build();
 
