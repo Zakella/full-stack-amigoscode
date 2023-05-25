@@ -1,13 +1,37 @@
+<p-sidebar  [(visible)]="display"
+            [position]="'right'"
+            [transitionOptions]="'300 cubic-bezier(0, 0, 0.2, 1)'"
+            styleClass="p-sidebar-lg"
+>
+  <h3>Right Sidebar
+
+    <button pButton
+    pRipple>
+
+    </button>
+  </h3>
+
+</p-sidebar>
+
 <div class="flex align-items-stretch" style="height: 99vh;">
   <div class="flex flex-column align-items-stretch border-right-1 col-2 border-green-200">
     <app-menu-bar></app-menu-bar>
   </div>
 
   <div class="flex flex-column flex-grow-1">
-    Header goes here
+    <app-header-bar>
+
+    </app-header-bar>
 
     <div class="main-container p-3">
-      Button here
+      <button
+        pButton
+        icon = "pi pi-plus"
+        label = "Create customer"
+        class="p-button-success"
+        (click)="display=true"
+        p
+      ></button>
       <div>
         customer will be displayed
       </div>

@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./customer.component.scss']
 })
 export class CustomerComponent {
+  display: boolean = false;
+  right: string = "right";
+  modal: boolean = false;
 
 }
