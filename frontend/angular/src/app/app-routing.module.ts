@@ -1,12 +1,21 @@
-import { NgModule } from '@angular/core';
+import {inject, NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {CustomerComponent} from "./components/customer/customer.component";
+import {LoginComponent} from "./components/login/login.component";
+import {AccessGuardService} from "./services/guard/access-guard.service";
 
 const routes: Routes = [
 
   {
     path: "customers",
-    component: CustomerComponent
+    component: CustomerComponent,
+    // canActivate: [() => AccessGuardService.ca]
+  },
+
+  {
+    path: "login",
+    component: LoginComponent,
+
   }
 ];
 

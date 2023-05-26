@@ -16,7 +16,11 @@ import {ToastModule} from "primeng/toast";
 import {MenuModule} from "primeng/menu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SidebarModule} from "primeng/sidebar";
-
+import { ManageCustomerComponent } from './components/manage-customer/manage-customer.component';
+import { LoginComponent } from './components/login/login.component';
+import {DividerModule} from "primeng/divider";
+import {HttpClientModule} from "@angular/common/http";
+import { MessageModule } from 'primeng/message';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,8 @@ import {SidebarModule} from "primeng/sidebar";
     MenuBarComponent,
     MenuItemComponent,
     HeaderBarComponent,
+    ManageCustomerComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,10 @@ import {SidebarModule} from "primeng/sidebar";
     RippleModule,
     ToastModule,
     MenuModule,
-    SidebarModule
+    SidebarModule,
+    DividerModule,
+    HttpClientModule,
+    MessageModule
 
   ],
   providers: [],
