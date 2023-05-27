@@ -17,9 +17,12 @@ export class AccessGuardService implements CanActivate{
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const storedUser = localStorage.getItem("user");
+
     if(storedUser){
       const authResponce:AuthenticationResponse = JSON.parse(storedUser);
       const token = authResponce.token;
+      console.log(token);
+
       if(token){
         const jwtHelper:JwtHelperService = new JwtHelperService();
         const isTokenNonExpired = !jwtHelper.isTokenExpired(token);

@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import {CustomerComponent} from "./components/customer/customer.component";
 import {LoginComponent} from "./components/login/login.component";
 import {AccessGuardService} from "./services/guard/access-guard.service";
+import {AuthGuard} from "@auth0/auth0-angular";
 
 const routes: Routes = [
 
   {
     path: "customers",
     component: CustomerComponent,
-    // canActivate: [() => AccessGuardService.ca]
+    canActivate: [AccessGuardService]
   },
 
   {

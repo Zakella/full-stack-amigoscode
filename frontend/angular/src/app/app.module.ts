@@ -19,8 +19,12 @@ import {SidebarModule} from "primeng/sidebar";
 import { ManageCustomerComponent } from './components/manage-customer/manage-customer.component';
 import { LoginComponent } from './components/login/login.component';
 import {DividerModule} from "primeng/divider";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { MessageModule } from 'primeng/message';
+import {HttpInterceptorService} from "./services/interceptor/http-interceptor.service";
+import { CustomerCardComponent } from './components/customer-card/customer-card.component';
+import {CardModule} from "primeng/card";
+import {BadgeModule} from "primeng/badge";
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import { MessageModule } from 'primeng/message';
     HeaderBarComponent,
     ManageCustomerComponent,
     LoginComponent,
+    CustomerCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,10 +51,18 @@ import { MessageModule } from 'primeng/message';
     SidebarModule,
     DividerModule,
     HttpClientModule,
-    MessageModule
+    MessageModule,
+    CardModule,
+    BadgeModule
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
