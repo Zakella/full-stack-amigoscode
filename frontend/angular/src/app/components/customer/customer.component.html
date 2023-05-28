@@ -4,7 +4,9 @@
            styleClass="p-sidebar-lg"
 >
   <h3>
-    <app-manage-customer>
+    <app-manage-customer
+      [customer] = "customer"
+      (submit) = "save($event)">
     </app-manage-customer>
   </h3>
 
@@ -29,7 +31,7 @@
         (click)="display=true"
         p
       ></button>
-      <div class="">
+      <div class="flex justify-content-start align-items-center gap-5 mt-4 flex-wrap">
         <app-customer-card *ngFor="let customer of customers; let index=index"
                            [customer]="customer"
                            [customerIndex]="index">

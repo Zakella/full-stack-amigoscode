@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerDTO} from "../../modules/customer-dto";
 import {CustomerService} from "../../services/customer/customer.service";
-
+import {CustomerRegistrationRequest} from "../../modules/customer-registration-request";
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
@@ -13,6 +13,9 @@ export class CustomerComponent implements OnInit{
   modal: boolean = false;
 
   customers: Array<CustomerDTO> = [];
+
+  customer: CustomerRegistrationRequest = {};
+
 
 
   constructor( private customerService: CustomerService) {
@@ -33,5 +36,23 @@ export class CustomerComponent implements OnInit{
           console.log(data)
         }
       });
+  }
+
+  save (customer: CustomerRegistrationRequest) {
+
+    console.log(customer);
+    if(customer) {
+      this.customerService.registerCustomer(customer)
+        .subscribe(
+          {
+            next : ()=>{
+              this.findAllCustomers();
+              this.display = false;
+              this.customer = {};
+            }
+          }
+        );
+    }
+
   }
 }
