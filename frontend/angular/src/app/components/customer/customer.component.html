@@ -6,6 +6,7 @@
   <h3>
     <app-manage-customer
       [customer] = "customer"
+      [operation]="operation"
       (submit) = "save($event)">
     </app-manage-customer>
   </h3>
@@ -29,18 +30,30 @@
         label="Create customer"
         class="p-button-success"
         (click)="display=true"
-        p
+
       ></button>
       <div class="flex justify-content-start align-items-center gap-5 mt-4 flex-wrap">
         <app-customer-card *ngFor="let customer of customers; let index=index"
                            [customer]="customer"
-                           [customerIndex]="index">
+                           [customerIndex]="index"
+        (delete) = "deleteCustomer($event)">
         </app-customer-card>
 
       </div>
     </div>
 
   </div>
+
+  <p-toast position = "bottom-center"></p-toast>
+
+  <p-confirmDialog
+    header = "Confirmation"
+    icon = "pi pi-exclamation-triangle"
+    acceptLabel = "Delete"
+    acceptButtonStyleClass = "p-button-danger"
+    accepticon = "pi pi-trash"
+    rejectLabel = "Cancel"
+  ></p-confirmDialog>
 
 
 </div>

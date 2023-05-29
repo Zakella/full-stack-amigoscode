@@ -25,6 +25,8 @@ import {HttpInterceptorService} from "./services/interceptor/http-interceptor.se
 import { CustomerCardComponent } from './components/customer-card/customer-card.component';
 import {CardModule} from "primeng/card";
 import {BadgeModule} from "primeng/badge";
+import {ConfirmationService, MessageService} from "primeng/api";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import {BadgeModule} from "primeng/badge";
     HttpClientModule,
     MessageModule,
     CardModule,
-    BadgeModule
+    BadgeModule,
+    ConfirmDialogModule,
 
   ],
   providers: [
@@ -61,7 +64,9 @@ import {BadgeModule} from "primeng/badge";
       provide:HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
       multi:true
-    }
+    },
+    MessageService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

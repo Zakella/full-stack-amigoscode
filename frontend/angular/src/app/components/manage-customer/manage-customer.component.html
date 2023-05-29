@@ -1,6 +1,7 @@
+
 <div>
   <h2>
-    Title
+    {{title}}
   </h2>
   <div class="field">
     <label for="firstname">Name</label>
@@ -13,7 +14,7 @@
   </div>
 
   <div class="field">
-    <label for="email">email</label>
+    <label for="email">Email</label>
     <input
            [(ngModel)] = "customer.email"
            pInputText
@@ -24,7 +25,7 @@
   </div>
 
 
-  <div class="field flex flex-column" >
+  <div class="field flex flex-column"  *ngIf ="operation==='create'" >
     <label for="gender">Gender</label>
 
     <select
@@ -51,7 +52,7 @@
            id="age">
   </div>
 
-  <div class="field">
+  <div class="field" *ngIf ="operation==='create'">
     <label for="password">Password</label>
     <input pInputText
            [(ngModel)] = "customer.password"
