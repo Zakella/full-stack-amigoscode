@@ -16,7 +16,7 @@ export class CustomerComponent implements OnInit {
 
   customer: CustomerRegistrationRequest = {};
 
-  operation : 'create'| 'update' = 'create';
+  operation: 'create' | 'update' = 'create';
 
 
   constructor(private customerService: CustomerService,
@@ -60,17 +60,35 @@ export class CustomerComponent implements OnInit {
 
     console.log(customer);
     if (customer) {
-      this.customerService.registerCustomer(customer)
-        .subscribe(
-          {
-            next: () => {
-              this.findAllCustomers();
-              this.display = false;
-              this.customer = {};
-              this.showSuccessMessage("Customer added successfully", `Customer ${this.customer.name} was saved`);
+      if (this.operation === "create") {
+
+        this.customerService.registerCustomer(customer)
+          .subscribe(
+            {
+              next: () => {
+                this.findAllCustomers();
+                this.display = false;
+                this.customer = {};
+                this.showSuccessMessage("Customer added successfully", `Customer ${this.customer.name} was saved`);
+              }
             }
-          }
-        );
+          );
+
+      }
+      else {
+        this.customerService.updateCustomer(customer.id, customer)
+          .subscribe(
+            {
+              next: () => {
+                this.findAllCustomers();
+                this.display = false;
+                this.customer = {};
+                this.showSuccessMessage("Customer updated successfully", `Customer ${this.customer.name} was updated`);
+              }
+            }
+          );
+      }
+
     }
   }
 
@@ -95,5 +113,18 @@ export class CustomerComponent implements OnInit {
       }
     });
 
+  }
+
+  customerUpdate(customerDTO: CustomerDTO) {
+    this.display = true;
+    this.customer = customerDTO;
+    this.operation = "update";
+  }
+
+
+  createCustomer() {
+    this.display = true;
+    this.customer = {};
+    this.operation = "create";
   }
 }

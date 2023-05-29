@@ -32,9 +32,12 @@ export class ManageCustomerComponent implements OnInit{
   get isCustomerValid () : boolean{
     return this.hasLength(this.customer.name) &&
       this.hasLength(this.customer.email) &&
-      this.hasLength(this.customer.password)  &&
-      this.hasLength(this.customer.gender)  &&
-     this.customer.age != undefined  && this.customer.age > 0;
+      this.customer.age != undefined  && this.customer.age > 0 &&
+      (
+       this.operation === "update" || this.hasLength(this.customer.password)  &&
+      this.hasLength(this.customer.gender)
+      )
+     ;
   }
 
   private hasLength(input : string|undefined ) :boolean {
