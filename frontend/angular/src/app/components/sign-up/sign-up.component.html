@@ -1,11 +1,79 @@
-<div class="flex" style="height: 100vh">
+<div class="flex mt-0" style="height: 100vh">
 
-  <div class="col-6">
-    part 1
+  <div class="col-6 flex justify-content-center">
+    <div class="m-auto">
+
+      <div class="text-center">
+        <p-avatar
+          image="https://user-images.githubusercontent.com/40702606/210880158-e7d698c2-b19a-4057-b415-09f48a746753.png"
+          styleClass="mr-2"
+          size="xlarge"
+          shape="circle"
+        ></p-avatar>
+        <h1>Register an account</h1>
+
+      </div>
+
+      <div class="field">
+        <input id="name"
+               pInputText
+               placeholder="Username"
+               type="text"
+               class="w-full"
+        >
+
+      </div>
+
+      <div class="field">
+        <input id="email"
+               pInputText
+               placeholder="Email"
+               type="email"
+               class="w-full"
+        ></div>
+
+      <div class="field">
+        <input id="age"
+               pInputText
+               placeholder="Age"
+               type="number"
+               class="w-full"
+        ></div>
+
+
+      <div class="field flex flex-column">
+        <select
+          id="gender"
+          class="p-dropdown w-full custom-select"
+        >
+          <option value="">Select an gender</option>
+          <option value="MALE">MALE</option>
+          <option value="FEMALE">FEMALE</option>
+        </select>
+
+      </div>
+
+      <div class="field">
+        <input id="password"
+               pInputText
+               placeholder="Password"
+               type="password"
+               class="w-full"
+        ></div>
+
+
+      <button
+        [disabled]="disable"
+        pButton
+        label="Create account"
+        class="w-full"
+      ></button>
+
+    </div>
   </div>
 
   <div class="col-6">
-    <app-enrol-image class="">
+    <app-enrol-image class="flex h-full">
 
     </app-enrol-image>
   </div>
