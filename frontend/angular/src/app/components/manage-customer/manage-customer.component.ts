@@ -7,7 +7,7 @@ import {CustomerDTO} from "../../modules/customer-dto";
   templateUrl: './manage-customer.component.html',
   styleUrls: ['./manage-customer.component.scss']
 })
-export class ManageCustomerComponent implements OnInit{
+export class ManageCustomerComponent{
 
   @Input()
   customer: CustomerRegistrationRequest = {};
@@ -15,18 +15,12 @@ export class ManageCustomerComponent implements OnInit{
   @Output()
   submit:EventEmitter<CustomerRegistrationRequest> = new EventEmitter<CustomerRegistrationRequest>();
 
-  title : string = "New customer"
+
+  @Output()
+  cancel:EventEmitter<void> = new EventEmitter<void>();
 
   @Input()
   operation : 'create'| 'update' = 'create';
-
-
-  ngOnInit(): void {
-
-    if(this.operation ==='update') {
-      this.title = 'Update customer';
-    }
-  }
 
 
   get isCustomerValid () : boolean{
@@ -50,5 +44,8 @@ export class ManageCustomerComponent implements OnInit{
   }
 
 
+  onCancel() {
+    this.cancel.emit();
 
+  }
 }

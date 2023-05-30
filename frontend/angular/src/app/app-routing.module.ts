@@ -4,6 +4,7 @@ import {CustomerComponent} from "./components/customer/customer.component";
 import {LoginComponent} from "./components/login/login.component";
 import {AccessGuardService} from "./services/guard/access-guard.service";
 import {AuthGuard} from "@auth0/auth0-angular";
+import {SignUpComponent} from "./components/sign-up/sign-up.component";
 
 const routes: Routes = [
 
@@ -17,7 +18,13 @@ const routes: Routes = [
     path: "login",
     component: LoginComponent,
 
-  }
+  },
+
+  {
+    path: "signup",
+    component: SignUpComponent,
+
+  },
 ];
 
 @NgModule({

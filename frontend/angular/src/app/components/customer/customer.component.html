@@ -7,7 +7,9 @@
     <app-manage-customer
       [customer] = "customer"
       [operation]="operation"
-      (submit) = "save($event)">
+      (submit) = "save($event)"
+      (cancel)="cancel()"
+    >
     </app-manage-customer>
   </h3>
 

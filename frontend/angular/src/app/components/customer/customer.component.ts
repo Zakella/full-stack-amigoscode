@@ -127,4 +127,9 @@ export class CustomerComponent implements OnInit {
     this.customer = {};
     this.operation = "create";
   }
+
+  cancel() {
+    this.display = false;
+    this.customer = {};
+  }
 }
