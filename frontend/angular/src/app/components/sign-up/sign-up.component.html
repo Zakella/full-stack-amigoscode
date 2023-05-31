@@ -20,6 +20,7 @@
                placeholder="Username"
                type="text"
                class="w-full"
+               [(ngModel)] = "customer.name"
         >
 
       </div>
@@ -30,6 +31,7 @@
                placeholder="Email"
                type="email"
                class="w-full"
+               [(ngModel)] = "customer.email"
         ></div>
 
       <div class="field">
@@ -38,6 +40,7 @@
                placeholder="Age"
                type="number"
                class="w-full"
+               [(ngModel)] = "customer.age"
         ></div>
 
 
@@ -45,6 +48,7 @@
         <select
           id="gender"
           class="p-dropdown w-full custom-select"
+          [(ngModel)] = "customer.gender"
         >
           <option value="">Select an gender</option>
           <option value="MALE">MALE</option>
@@ -59,15 +63,20 @@
                placeholder="Password"
                type="password"
                class="w-full"
+               [(ngModel)] = "customer.password"
         ></div>
 
 
       <button
-        [disabled]="disable"
+        [disabled]="!isCustomerValid"
         pButton
         label="Create account"
         class="w-full"
+        (click)="registerCustomer()"
       ></button>
+
+
+      <p-toast position = "bottom-center"></p-toast>
 
     </div>
   </div>

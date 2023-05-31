@@ -40,4 +40,8 @@ export class CustomerService {
   updateCustomer(id:  number| undefined, customer : CustomerUpdateRequest): Observable<void> {
     return this.http.put <void>(`${this.customerURL}/${id}`, customer);
   }
+
+  registerCustomerAndAuthenticate(customer: CustomerRegistrationRequest): Observable<AuthenticationResponse> {
+    return this.http.post <AuthenticationResponse>(this.customerURL, customer)
+  }
 }

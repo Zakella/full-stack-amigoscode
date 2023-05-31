@@ -17,7 +17,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     const storedUser = localStorage.getItem("user");
 
-    if (storedUser) {
+    if (storedUser && storedUser !== "null") {
       const authResponce: AuthenticationResponse = JSON.parse(storedUser);
       const token = authResponce.token;
 

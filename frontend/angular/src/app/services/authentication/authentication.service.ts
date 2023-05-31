@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {AuthenticationRequest} from "../../modules/authentication-request";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
-import {CustomerDTO} from "../../modules/customer-dto";
 
 
 @Injectable({
