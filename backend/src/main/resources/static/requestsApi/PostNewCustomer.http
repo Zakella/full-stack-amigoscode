@@ -1,9 +1,9 @@
-POST localhost:9988/api/v1/customers
+POST localhost:8080/api/v1/customers
 Content-Type: application/json
 
 {
   "name": "Joe",
-  "email": "test",
+  "email": "test1",
   "age": 88,
   "password": "123",
   "gender": "MALE"

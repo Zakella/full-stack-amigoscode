@@ -16,21 +16,21 @@ services:
       - "5432:5432"
     restart: unless-stopped
 
-#  amigoscode-api:
-#    container_name: amigos-backend
-#    image: amigos-backend
-#    build:
-#      context: backend
-#      dockerfile: Dockerfile
-#      args:
-#       APP_NAME: amigos-backend
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/fullstack
-#    ports:
-#      - "8088:8088"
-#    depends_on:
-#      - db
-#    restart: unless-stopped
+  amigoscode-api:
+    container_name: amigos-backend
+    image: amigos-backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+      args:
+       APP_NAME: amigos-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/fullstack
+    ports:
+      - "8088:8088"
+    depends_on:
+      - db
+    restart: unless-stopped
 #
 #  amigoscode-react:
 #    container_name: amigoscode-react
