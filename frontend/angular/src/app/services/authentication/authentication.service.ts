@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {AuthenticationRequest} from "../../modules/authentication-request";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
+import {CustomerRegistrationRequest} from "../../modules/customer-registration-request";
+import {AuthenticationResponse} from "../../modules/authentication-response";
 
 
 @Injectable({
@@ -24,6 +26,7 @@ export class AuthenticationService {
     )
 
   }
+
 
 
 }

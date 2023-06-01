@@ -9,6 +9,12 @@ import {SignUpComponent} from "./components/sign-up/sign-up.component";
 const routes: Routes = [
 
   {
+    path: "",
+    redirectTo: "login",
+    pathMatch: "full"
+  },
+
+  {
     path: "customers",
     component: CustomerComponent,
     canActivate: [AccessGuardService]

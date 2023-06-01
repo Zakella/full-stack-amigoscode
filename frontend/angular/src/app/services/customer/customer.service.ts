@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {CustomerDTO} from "../../modules/customer-dto";
 import {map, Observable, throwError} from "rxjs";
 import {AuthenticationResponse} from "../../modules/authentication-response";
@@ -41,7 +41,5 @@ export class CustomerService {
     return this.http.put <void>(`${this.customerURL}/${id}`, customer);
   }
 
-  registerCustomerAndAuthenticate(customer: CustomerRegistrationRequest): Observable<AuthenticationResponse> {
-    return this.http.post <AuthenticationResponse>(this.customerURL, customer)
-  }
+
 }

@@ -4,6 +4,8 @@ import {CustomerService} from "../../services/customer/customer.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {Router} from "@angular/router";
 import {MessageService} from "primeng/api";
+import {AuthenticationService} from "../../services/authentication/authentication.service";
+import {AuthenticationRequest} from "../../modules/authentication-request";
 
 @Component({
   selector: 'app-sign-up',
@@ -11,19 +13,23 @@ import {MessageService} from "primeng/api";
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-  constructor(private customerService:CustomerService,
-              private router:Router ,
-              private messageService: MessageService) {
+  constructor(private authenticationService: AuthenticationService,
+              private router: Router,
+              private messageService: MessageService,
+              private customerService: CustomerService,) {
   }
+
   customer: CustomerRegistrationRequest = {};
 
+  authRequest: AuthenticationRequest = {}
+
   get isCustomerValid(): boolean {
-     return this.hasLength(this.customer.name) &&
-       this.hasLength(this.customer.email) &&
-       this.customer.age != undefined && this.customer.age > 0 &&
-       this.hasLength(this.customer.password) &&
-       this.hasLength(this.customer.gender)
-       ;
+    return this.hasLength(this.customer.name) &&
+      this.hasLength(this.customer.email) &&
+      this.customer.age != undefined && this.customer.age > 0 &&
+      this.hasLength(this.customer.password) &&
+      this.hasLength(this.customer.gender)
+      ;
   }
 
   private hasLength(input: string | undefined): boolean {
@@ -32,43 +38,47 @@ export class SignUpComponent {
 
 
   registerCustomer(): void {
-    const response =  this.customerService.registerCustomerAndAuthenticate(this.customer);
-    console.log(response);
-    response.subscribe(
-      {
-        next : (res) =>{
-          console.log(res);
-        }
 
-      }
-    )
-    // this.customerService.registerCustomerAndAuthenticate(this.customer).subscribe(
-    //   {
-    //     next: (responce)=>{
-    //       console.log(responce)
-    //
-    //       localStorage.setItem('user', JSON.stringify(responce))
-    //       this.router.navigate(["customers"])
-    //
-    //
-    //     },
-    //     error : (err:any) =>{
-    //       console.log(err);
-    //        this.showError(err.error.message)
-    //     }
-    //
-    //   }
-    // );
+     this.customerService.registerCustomer(this.customer)
+      .subscribe(
+        {
+          next: () => {
+            this.authRequest.username = this.customer.email;
+            this.authRequest.password = this.customer.password;
+            this.authenticationService.login(this.authRequest)
+              .subscribe(
+                {
+                  next:(authResponce) =>{
+                    console.log(authResponce)
+                    localStorage.setItem('user', JSON.stringify(authResponce))
+                    this.router.navigate(["customers"])
+                  },
+                  error:(err) => {
+                    console.log(err.error.statusCode);
+
+                  }
+                }
+              );
+
+
+          },
+          error: (err) => {
+            this.showError(err.error.message)
+          }
+        }
+      )
   }
 
-  showError(summary:string) {
+  showError(summary: string) {
     this.messageService.add(
       {
-      severity: 'error',
-      summary: summary,
-      icon: "pi pi-times-circle"}
+        severity: 'error',
+        summary: summary,
+        icon: "pi pi-times-circle"
+      }
     );
   }
+
 
 
 }
