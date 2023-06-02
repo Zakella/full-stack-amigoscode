@@ -60,7 +60,7 @@ jobs:
             cd ~/amigos-full-stack/full-stack-amigoscode/
             git pull origin main
             git status
-            docker compose pull
-            docker compose down
+#            docker compose pull
+#            docker compose down
             docker compose up -d
 
