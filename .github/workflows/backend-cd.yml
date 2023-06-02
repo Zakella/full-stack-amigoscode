@@ -49,7 +49,6 @@ jobs:
         run: |
           mvn -ntp -B verify -Ddocker.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} jib:build
 
-
 #      - name: Deploying application to server
 #        uses: appleboy/ssh-action@master
 #        with:
@@ -63,5 +62,3 @@ jobs:
 #            #            docker compose pull
 #            #            docker compose down
 #                    docker compose up -d
-#---
-
