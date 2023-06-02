@@ -50,18 +50,18 @@ jobs:
           mvn -ntp -B verify -Ddocker.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} jib:build
 
 
-      - name: Deploying application to server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY1 }}
-          script: |
-                    cd ~/amigos-full-stack/full-stack-amigoscode/
-                    git pull origin main
-                    git status
-            #            docker compose pull
-            #            docker compose down
-                    docker compose up -d
----
+#      - name: Deploying application to server
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          key: ${{ secrets.SSH_PRIVATE_KEY1 }}
+#          script: |
+#                    cd ~/amigos-full-stack/full-stack-amigoscode/
+#                    git pull origin main
+#                    git status
+#            #            docker compose pull
+#            #            docker compose down
+#                    docker compose up -d
+#---
 
